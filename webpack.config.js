@@ -38,8 +38,6 @@ module.exports = (env) => {
         }
       ]
     },
-    mode: "development",
-    devtool: "inline-source-map",
     plugins: [
       new TerserPlugin(),
       new MiniCssExtractPlugin({
