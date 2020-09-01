@@ -102,16 +102,6 @@ window.onload = () => {
 			.text(continent);
 	});
 
-	// Clean data
-	formattedData = data.map((year) => {
-		return year["countries"].filter(country => country.life_exp && country.income)
-	}).map(country => {
-		country.income = +country.income;
-		country.life_exp = +country.life_exp;
-		return country;
-	});
-	update(formattedData[0]);
-
 	$("#play-button")
 		.on("click", function () {
 			var button = $(this);
@@ -189,4 +179,14 @@ window.onload = () => {
 		$("#year")[0].innerHTML = +(time + 1800);
 		$("#date-slider").slider("value", +(time + 1800));
 	}
+
+	// Clean data
+	formattedData = data.map((year) => {
+		return year["countries"].filter(country => country.life_exp && country.income)
+	}).map(country => {
+		country.income = +country.income;
+		country.life_exp = +country.life_exp;
+		return country;
+	});
+	update(formattedData[0]);
 };

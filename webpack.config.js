@@ -17,6 +17,7 @@ module.exports = (env) => {
       filename: "bundle.[contenthash].js",
       publicPath: '/dist'
     },
+    mode: 'production',
     module: {
       rules: [{
           test: /\.(png|jpg)$/,
