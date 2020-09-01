@@ -1,10 +1,5 @@
-/*
- *    main.js
- *    Mastering Data Visualization with D3.js
- *    Project 2 - Gapminder Clone
- */
-
 import './style.css';
+import data from "./data.js";
 
 window.onload = () => {
 	var margin = {
@@ -107,17 +102,15 @@ window.onload = () => {
 			.text(continent);
 	});
 
-	fetch("/getData").then(res => res.json()).then(function (data) {
-		// Clean data
-		formattedData = data.map((year) => {
-			return year["countries"].filter(country => country.life_exp && country.income)
-		}).map(country => {
-			country.income = +country.income;
-			country.life_exp = +country.life_exp;
-			return country;
-		});
-		update(formattedData[0]);
-	}).catch(err => console.log(err));
+	// Clean data
+	formattedData = data.map((year) => {
+		return year["countries"].filter(country => country.life_exp && country.income)
+	}).map(country => {
+		country.income = +country.income;
+		country.life_exp = +country.life_exp;
+		return country;
+	});
+	update(formattedData[0]);
 
 	$("#play-button")
 		.on("click", function () {
